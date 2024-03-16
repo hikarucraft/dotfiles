@@ -1,0 +1,1 @@
+;;hikarucraft's emacs config
