@@ -84,9 +84,22 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(exec-path-from-shell magit git-gutter web-mode)))
+ '(package-selected-packages '(leaf exec-path-from-shell magit git-gutter web-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(web-mode-comment-face ((t (:foreground "#587F35"))))
+ '(web-mode-css-at-rule-face ((t (:foreground "#DFCF44"))))
+ '(web-mode-css-property-name-face ((t (:foreground "#87CEEB"))))
+ '(web-mode-css-pseudo-class ((t (:foreground "#DFCF44"))))
+ '(web-mode-css-selector-face ((t (:foreground "#DFCF44"))))
+ '(web-mode-css-string-face ((t (:foreground "#D78181"))))
+ '(web-mode-doctype-face ((t (:foreground "#4A8ACA"))))
+ '(web-mode-html-attr-equal-face ((t (:foreground "#FFFFFF"))))
+ '(web-mode-html-attr-name-face ((t (:foreground "#87CEEB"))))
+ '(web-mode-html-attr-value-face ((t (:foreground "#D78181"))))
+ '(web-mode-html-tag-bracket-face ((t (:foreground "#4A8ACA"))))
+ '(web-mode-html-tag-face ((t (:foreground "#4A8ACA"))))
+ '(web-mode-server-comment-face ((t (:foreground "#587F35")))))
