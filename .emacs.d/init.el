@@ -2,6 +2,25 @@
 ;; hikarucraft's emacs config
 ;;
 
+;; leaf.el install scripts
+
+;; <leaf-install-code>
+(eval-and-compile
+  (customize-set-variable
+   'package-archives '(("org" . "https://orgmode.org/elpa/")
+                       ("melpa" . "https://melpa.org/packages/")
+                       ("gnu" . "https://elpa.gnu.org/packages/")))
+  (package-initialize)
+  (unless (package-installed-p 'leaf)
+    (package-refresh-contents)
+    (package-install 'leaf))
+
+  (leaf leaf-keywords
+    :ensure t
+    :config
+    ;; initialize leaf-keywords.el
+    (leaf-keywords-init)))
+;; </leaf-install-code>
 
 ;; executable path
 ;; (setq exec-path (append exec-path '("~/.nvm/versions/node/v20.11.0/bin")))
