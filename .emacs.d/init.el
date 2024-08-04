@@ -37,7 +37,6 @@
 ;;   (exec-path-from-shell-initialize))
 ;;(require 'lsp-tailwindcss)
 ;; web-mode
-
 ;; (require 'web-mode)
 
 ;; (add-to-list 'auto-mode-alist '("\\.js[x]?$" . web-mode))
