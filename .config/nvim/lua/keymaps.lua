@@ -6,3 +6,4 @@ keymap("i", "\"", "\"\"<Left>", opts)
 keymap("i", "(", "()<Left>", opts)
 keymap("i", "{", "{}<Left>", opts)
 
+keymap("n","<C-l>",":<C-u>setlocal relativenumber!<CR>",opts)
