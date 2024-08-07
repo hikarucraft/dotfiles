@@ -23,5 +23,27 @@ return {
            },
            init = function() vim.g.barbar_auto_setup = false end,
            opts = {},
-         }
+         },
+         { "neovim/nvim-lspconfig" },
+         { "williamboman/mason.nvim" },
+         { "williamboman/mason-lspconfig.nvim" },
+         { "hrsh7th/nvim-cmp" },
+         { "hrsh7th/cmp-nvim-lsp" },
+         { "hrsh7th/cmp-buffer" },
+         { "nvimtools/none-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" }},
+         { "MunifTanjim/prettier.nvim" },
+         {
+           "nvim-treesitter/nvim-treesitter",
+           build = ":TSUpdate",
+           config = function () 
+             local configs = require("nvim-treesitter.configs")
+
+             configs.setup({
+                 ensure_installed = {"tsx", "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
+                 sync_install = false,
+                 highlight = { enable = true },
+                 indent = { enable = true },  
+               })
+           end
+         },
 }
