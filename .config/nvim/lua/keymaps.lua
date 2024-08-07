@@ -9,7 +9,7 @@ keymap("i", "{", "{}<Left>", opts)
 keymap("n","<C-l>","<Cmd>setlocal relativenumber!<CR>",opts)
 keymap("n", "<C-k>", "<Cmd>BufferPrevious<CR>", opts)
 keymap("n", "<C-j>", "<Cmd>BufferNext<CR>", opts)
-keymap('n', '<C-c>', '<Cmd>BufferClose<CR>', opts)
+-- "keymap('n', '<C-c>', '<Cmd>BufferClose<CR>', opts)
 keymap('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
 
 vim.api.nvim_create_autocmd("LspAttach", {
