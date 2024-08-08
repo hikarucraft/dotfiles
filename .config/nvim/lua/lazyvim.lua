@@ -121,19 +121,24 @@ local prettier = require("prettier")
 prettier.setup({
   bin = 'prettier', -- or `'prettierd'` (v0.23.3+)
   filetypes = {
-    "css",
+    --"css",
     "graphql",
-    "html",
-    "javascript",
-    "javascriptreact",
-    "json",
+   -- "html",
+    --"javascript",
+    --"javascriptreact",
+   -- "json",
     "less",
     "markdown",
-    "scss",
-    "typescript",
-    "typescriptreact",
+    --"scss",
+   -- "typescript",
+   -- "typescriptreact",
     "yaml",
   },
 })
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
+require('nvim-treesitter.configs').setup {
+  ensure_installed = "all",
+  highlight = { enable = true },
+  indent = { enable = true }
+}

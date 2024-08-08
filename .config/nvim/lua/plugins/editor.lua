@@ -35,15 +35,29 @@ return {
          {
            "nvim-treesitter/nvim-treesitter",
            build = ":TSUpdate",
-           config = function () 
-             local configs = require("nvim-treesitter.configs")
+           --config = function () 
+           --  local configs = require("nvim-treesitter.configs")
 
-             configs.setup({
-                 ensure_installed = {"tsx", "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
-                 sync_install = false,
-                 highlight = { enable = true },
-                 indent = { enable = true },  
-               })
-           end
+           --  configs.setup({
+           --      ensure_installed = "all",
+           --      sync_install = false,
+           --      highlight = { enable = true },
+           --      indent = { enable = true },  
+           --    })
+           --end
+         },
+         {'christianchiarulli/nvcode-color-schemes.vim'},
+         {
+	       	"craftzdog/solarized-osaka.nvim",
+	       	lazy = true,
+	       	priority = 1000,
+	       	opts = function()
+	       		return {
+	       			transparent = true,
+	       		}
+	       	end,
+	       },
+         { 
+           "EdenEast/nightfox.nvim",
          },
 }
