@@ -12,19 +12,18 @@
         ("gnu" . "https://elpa.gnu.org/packages/")))
 (package-initialize)
 
-;; executable path
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
 
 ;; key-bindings
 
 (global-set-key (kbd "C-h") 'delete-backward-char)
+(setq mac-option-modifier nil)
+(setq mac-command-modifier 'meta)
 
 ;; display config
 (global-display-line-numbers-mode 1)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
-(add-to-list 'default-frame-alist '(font . "JetBrainsMono Nerd Font-18"))
+(add-to-list 'default-frame-alist '(font . "JetBrainsMono Nerd Font-16"))
 
 (setq-default indent-tab-mode nil)
 (setq-default tab-width 4)
