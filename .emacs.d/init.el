@@ -19,6 +19,8 @@
 (setq mac-option-modifier nil)
 (setq mac-command-modifier 'meta)
 
+(global-unset-key (kbd "C-x C-c"))
+
 ;; display config
 (global-display-line-numbers-mode 1)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
