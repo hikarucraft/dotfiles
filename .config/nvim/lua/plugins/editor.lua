@@ -1,8 +1,8 @@
-return {
-         {
+return{         
+        {
            'lambdalisue/vim-fern',
            keys = {
-             { "<C-n>", ":Fern . -reveal=% -drawer -toggle -width=80<CR>", desc = "toggle fern" },
+             { "<C-n>", ":Fern . -reveal=% -drawer -toggle -width=55<CR>", desc = "toggle fern" },
            },
            dependencies = {
              { 'lambdalisue/nerdfont.vim', },
@@ -58,6 +58,18 @@ return {
 	       	end,
 	       },
          { 
-           "EdenEast/nightfox.nvim",
+          "EdenEast/nightfox.nvim",
+          opts = {
+            options = {
+              transparent = true, -- 背景を透明にする
+              terminal_colors = true,
+              dim_inactive = true,
+            },
+          },
+          config = function(_, opts)
+            -- Nightfoxの設定を適用
+            require("nightfox").setup(opts)
+            vim.cmd("colorscheme nightfox") -- カラースキームを適用
+          end,
          },
 }
