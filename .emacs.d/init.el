@@ -193,4 +193,33 @@
 ;;   (add-to-list 'eglot-server-programs
 ;;                '(web-mode . ("typescript-language-server" "--stdio"))))
 
+;;(require-theme 'modus-themes)
+;;(load-theme 'modus-operandi t)
+;;(load-theme 'modus-vivendi t)
 
+
+;; M-s M-sでテーマトグル機能をバインド
+;;(global-set-key (kbd "M-s M-s") #'modus-themes-toggl)
+(use-package modus-themes
+  :ensure t
+  :config
+
+  ;; Load the theme of your choice.
+  (load-theme 'modus-vivendi-tritanopia))
+
+(use-package magit
+    :ensure t
+    :bind (("C-x g" . magit-status)
+            ("C-x M-g" . magit-dispatch-popup)
+            )
+    )
+
+(use-package combobulate
+  :custom
+  (combobulate-key-prefix "C-c o")
+  :hook
+  ((typescript-ts-mode . combobulate-mode)
+   (tsx-ts-mode . combobulate-mode)
+   (prog-mode . combobulate-mode))
+  :load-path ("~/dev/emacs-packages/combobulate")
+)
