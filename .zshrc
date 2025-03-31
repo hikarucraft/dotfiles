@@ -1,23 +1,3 @@
-alias mhelp='cat ~/.zshrc'
-
-alias la='ls -la --color'
-alias cdb='cd ../'
-
-alias gpnew='git push -u origin'
-alias g='git'
-alias gnew='git commit --allow-empty -m "create branch"'
-alias ginit='git init'
-alias gsw='git switch'
-alias gs='git status'
-alias gmain='git switch main'
-alias gp='git pull'
-alias gf='git fetch'
-alias gb='git branch'
-alias gl='git log'
-alias gadd='git add'
-alias gm='git commit'
-
-alias szsh='source ~/.zshrc'
 
 
 # export PATH=$HOME/opt/homebrew/bin:$PATH
@@ -41,11 +21,35 @@ eval "$(rbenv init - --no-rehash zsh)"
 
 export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH"
 
+setopt PROMPT_SUBST
 function ppt_dir(){
     local f_pwd="${PWD//$HOME/~}"
-    echo "\e[38;5;37m$f_pwd\e[0m"
+    #    echo "\e[38;5;37m$f_pwd\e[0m"
+    PROMPT=$'\n'"%F{37}$f_pwd%f"$'\n$ '
+}
+precmd() {
+    ppt_dir
 }
 
-export PROMPT=$'\n'$(ppt_dir)$'\n$ '
 
+alias mh='cat ~/.zshrc'
 
+alias la='ls -la --color'
+alias cdb='cd ../'
+
+alias gpn='git push -u origin'
+alias g='git'
+alias gcn='git commit --allow-empty -m "create branch"'
+alias ginit='git init'
+alias gsw='git switch'
+alias gs='git status'
+alias gmain='git switch main'
+alias gpl='git pull'
+alias gps='git push'
+alias gf='git fetch'
+alias gb='git branch'
+alias gl='git log'
+alias ga='git add'
+alias gc='git commit'
+
+alias lz='source ~/.zshrc'
