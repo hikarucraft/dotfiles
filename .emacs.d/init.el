@@ -231,11 +231,87 @@
   (when (not (one-window-p))
     (delete-window)))
 
-(global-set-key (kbd "C-c C-0") 'my/close-buffer-non-destructive)
+(global-set-key (kbd "C-x C-9") 'my/close-buffer-non-destructive)
 ;; Undo を C-/ に
 (global-set-key (kbd "C-/") 'undo)
 
 ;; Redo を C-. に
 (global-set-key (kbd "C-.") 'undo-redo)
+(defun my/treemacs-toggle-and-return ()
+  "Toggle Treemacs, but return focus to the previously selected window."
+  (interactive)
+  (let ((current (selected-window))) ;; 現在のウィンドウを記憶
+    (treemacs) ;; Treemacs をトグル表示
+    (select-window current))) ;; 元のウィンドウに戻す
+
+(use-package treemacs
+  :ensure t
+  :defer t
+  :bind
+  (("C-c v" . my/treemacs-toggle-and-return))
+  ;; (:map global-map
+  ;;       ("C-c v" . treemacs))
+  :config
+  (setq treemacs-width 30))  ;; お好みで幅を調整
 
 
+(use-package perspective
+  :ensure t
+  :custom
+  (persp-mode-prefix-key (kbd "C-x x")) ;; M-xと似た感覚
+  :init
+  (persp-mode))
+
+;; (defun my/kill-all-user-buffers ()
+;;   "Kill all user buffers (excluding special buffers)."
+;;   (interactive)
+;;   (dolist (buf (buffer-list))
+;;     (let ((name (buffer-name buf)))
+;;       (when (and (not (string-prefix-p "*" name))
+;;                  (buffer-file-name buf))
+;;         (kill-buffer buf)))))
+
+;; (defun my/setup-vscode-like-layout ()
+;;   "Reset and build a 3-pane layout: Treemacs | Editor | Magit."
+;;   (interactive)
+;;   (my/kill-all-user-buffers)
+;;   (switch-to-buffer "*scratch*")
+;;   (delete-other-windows)
+
+;;   (let* ((main-window (selected-window))
+;;          (editor-window (split-window main-window nil 'right))
+;;          (magit-window (split-window editor-window (floor (* 0.66 (window-total-height))) 'below)))
+
+;;     (select-window main-window)
+;;     (unless (get-buffer "*Treemacs-Workspace*")
+;;       (treemacs))
+;;     (treemacs-select-window)
+
+;;     (select-window magit-window)
+;;     (magit-status)
+
+;;     (select-window editor-window)))
+
+;; (global-set-key (kbd "C-c m") 'my/setup-vscode-like-layout)
+
+;; (add-hook 'emacs-startup-hook
+;;           (lambda ()
+;;             (persp-switch "main")
+;;             (my/setup-vscode-like-layout)))
+
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode))
+
+(use-package consult
+  :ensure t)
+
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic)))
+
+
+(defun persp-main () (interactive) (persp-switch "main"))
+(global-set-key (kbd "C-c m") 'persp-main)
