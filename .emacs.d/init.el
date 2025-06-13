@@ -209,7 +209,7 @@
 
 (use-package magit
     :ensure t
-    :bind (("C-x g" . magit-status)
+    :bind (("C-x C-g" . magit-status)
             ("C-x M-g" . magit-dispatch-popup)
             )
     )
@@ -221,5 +221,21 @@
   ((typescript-ts-mode . combobulate-mode)
    (tsx-ts-mode . combobulate-mode)
    (prog-mode . combobulate-mode))
-  :load-path ("~/dev/emacs-packages/combobulate")
+  :load-path ("~/dev/package/emacs-packages/combobulate")
 )
+
+(defun my/close-buffer-non-destructive ()
+  "Kill the current window and bury the buffer instead of killing it."
+  (interactive)
+  (bury-buffer)
+  (when (not (one-window-p))
+    (delete-window)))
+
+(global-set-key (kbd "C-c C-0") 'my/close-buffer-non-destructive)
+;; Undo を C-/ に
+(global-set-key (kbd "C-/") 'undo)
+
+;; Redo を C-. に
+(global-set-key (kbd "C-.") 'undo-redo)
+
+
